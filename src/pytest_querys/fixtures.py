@@ -11,8 +11,8 @@ from pytest_querys.core.registry import service_manger, service_query, service_s
 
 @pytest.fixture(scope="session")
 def services_inventory(request):
-    file_path = request.config.getini("service_inventory")
-    file_path = os.path.join(request.config.getoption("rootdir"), file_path)
+    file_path = request.config.getoption("service_inventory")
+    # file_path = os.path.join(request.config.getoption("rootdir"), file_path)
     print("cfg_file_path", file_path)
     if not os.path.exists(file_path):
         inventory = None
