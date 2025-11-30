@@ -6,6 +6,7 @@ from functools import wraps
 代办：1、处理manger类的条件管理，manger必须是基于QueryManger的才允许注册
 '''
 
+
 def make_registry_conditional(registry):
     """只对特定注册表实例应用条件补丁"""
 
@@ -45,27 +46,6 @@ def make_registry_conditional(registry):
     return registry
 
 
-service_manger = catalogue.create("services", "manger")
-service_query = catalogue.create("services", "query")
-service_session = catalogue.create("services", "session")
-
-# make_registry_conditional(service_manger)
-#
-#
-# # 这个注册表支持条件注册
-# @service_manger.register(condition=lambda: os.getenv("ENV") == "production")
-# class ProductionService:
-#     pass
-#
-#
-# @service_manger.register("email")
-# class EmailService:
-#     _register_condition = lambda: os.getenv("ENABLE_EMAIL") == "true"
-#
-#
-# # 这个注册表保持原始行为
-# @normal_registry.register("logger")
-# class LoggerService:
-#     pass  # 始终注册
-
-
+service_manger = catalogue.create("manger.querys.pytest_querys", entry_points=True)
+service_query = catalogue.create("query.querys.pytest_querys", entry_points=True)
+service_session = catalogue.create("session.querys.pytest_querys", entry_points=True)
