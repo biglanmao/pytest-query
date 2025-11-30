@@ -8,18 +8,7 @@ authors = [
 readme = "README.md"
 requires-python = ">=3.8"
 keywords = ["web-service", "database", "redis", "postgres", "ftp"]
-classifiers = [
-    "Development Status :: 4 - Beta",
-    "Intended Audience :: Developers",
-    "License :: OSI Approved :: MIT License",
-    "Operating System :: OS Independent",
-    "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.8",
-    "Programming Language :: Python :: 3.9",
-    "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11",
-    "Programming Language :: Python :: 3.12",
-]
+classifiers = []
 dependencies = [
     "PyYAML>=6.0",
     "requests>=2.25.0",
@@ -42,11 +31,14 @@ Issues = "https://github.com/biglanmao/pytest-querys/issues"
 [project.scripts]
 # web-service-manager = "web_service_manager.cli:main"
 
-[project.entry-points."pytest-querys.plugins"]
-#ftp = "pytest-querys.plugins.ftp:FTPPlugin"
-#postgres = "pytest-querys.plugins.postgres:PostgreSQLPlugin"
-#redis = "pytest-querys.plugins.redis:RedisPlugin"
-#http = "pytest-querys.plugins.http:HTTPPlugin"
+[project.entry-points."manger.querys.pytest_querys"]
+http_api_server = "pytest_querys.querys.http:HttpQueryManger"
+
+[project.entry-points."query.querys.pytest_querys"]
+
+
+[project.entry-points."session.querys.pytest_querys"]
+
 
 [build-system]
 requires = ["setuptools>=45", "wheel"]
