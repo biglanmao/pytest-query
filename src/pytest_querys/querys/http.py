@@ -3,39 +3,13 @@ from enum import unique, Enum
 import requests
 from urllib3.util.retry import Retry
 from requests.adapters import HTTPAdapter
-
-from src.manger import QueryManger
-from src.category import ServiceCategoryManager
-
-from src.registry import service_manger
-
-'''
-# 最终将这个类放在entry point让从这个注册。
-# 这样其他的注册到entry point也可以直接注册。
-
-'''
-
-
-@unique
-class ServiceCategory(Enum):
-    REDIS = "redis_server"
-    WEB = "web_server"
-    POSTGRES = "postgres_server"
-
-
-ServiceCategoryManager.register_enum(ServiceCategory)
+from pytest_querys.manger import QueryManger
+from pytest_querys.querys import ServiceCategory
+from pytest_querys.registry import service_manger
 
 
 @service_manger.register(ServiceCategory.WEB.value)
-class WebQueryManger(QueryManger):
-    '''
-        创建和管理全局的web资源对象。
-        1、完成web资源的初始化和资源获取。
-        2、返回一个获取资源的函数，然后可以传递参数来获取需要的资源。直接传递资源的名称即可。返回一个web_session。
-        3、最终返回的是request 。session对象
-        4、seesion自己支持上下文管理则不用实现上下文管理，直接返回session。
-        方法设计，设计一个seesion的管理的夹具。然后按照给定的服务器名称创建初始化对应的session对象，进行会话的初始化后进行返回。然后在夹具中对seesion进行上下文管理
-    '''
+class HttpQueryManger(QueryManger):
     SERVICE_CATEGORY = ServiceCategory.WEB
 
     def _configure_session(self, session, config):
