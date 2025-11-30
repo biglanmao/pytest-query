@@ -6,7 +6,6 @@ from pytest_querys.querys import ServiceCategory
 from pytest_querys.core.registry import service_manger
 
 
-@service_manger.register(ServiceCategory.WEB.value)
 class HttpQueryManger(QueryManger):
     SERVICE_CATEGORY = ServiceCategory.WEB
 

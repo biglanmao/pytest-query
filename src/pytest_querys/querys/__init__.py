@@ -6,7 +6,7 @@ from pytest_querys.core.category import ServiceCategoryManager
 @unique
 class ServiceCategory(Enum):
     REDIS = "redis_server"
-    WEB = "web_server"
+    WEB = "http_api_server"
     POSTGRES = "postgres_server"
 
 
