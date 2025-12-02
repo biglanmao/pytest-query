@@ -1,9 +1,9 @@
 import requests
 from urllib3.util.retry import Retry
 from requests.adapters import HTTPAdapter
-from pytest_querys.core.manger import QueryManger
-from pytest_querys.querys import ServiceCategory
-from pytest_querys.core.registry import service_manger
+from pytest_query.core.manger import QueryManger
+from pytest_query.queries import ServiceCategory
+from pytest_query.core.registry import service_manger
 
 
 class HttpQueryManger(QueryManger):
@@ -29,7 +29,7 @@ class HttpQueryManger(QueryManger):
 
     def get_session(self, name):
         session = requests.Session()
-        service_config = self.inventory.get_service_config(self.SERVICE_CATEGORY, name)
+        service_config = self.inventory.get_query_config(self.SERVICE_CATEGORY, name)
         self._configure_session(session, service_config)
         return session
 

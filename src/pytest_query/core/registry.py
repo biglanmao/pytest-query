@@ -46,6 +46,6 @@ def make_registry_conditional(registry):
     return registry
 
 
-service_manger = catalogue.create("manger.querys.pytest_querys", entry_points=True)
-service_query = catalogue.create("query.querys.pytest_querys", entry_points=True)
-service_session = catalogue.create("session.querys.pytest_querys", entry_points=True)
+service_manger = catalogue.create("manger.queries.pytest_query", entry_points=True)
+service_query = catalogue.create("query.queries.pytest_query", entry_points=True)
+service_session = catalogue.create("session.queries.pytest_query", entry_points=True)

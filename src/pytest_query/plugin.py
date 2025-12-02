@@ -1,4 +1,4 @@
-from pytest_querys.fixtures import (
+from pytest_query.fixtures import (
     services_inventory,
     service_mangers,
     service_querys,
@@ -7,8 +7,8 @@ from pytest_querys.fixtures import (
 
 
 def pytest_addoption(parser):
-    """Add options to control pytest-querys."""
-    group = parser.getgroup("pytest-querys")
+    """Add options to control pytest-queries."""
+    group = parser.getgroup("pytest-queries")
     group.addoption(
         "--service-inventory",
         action="store",

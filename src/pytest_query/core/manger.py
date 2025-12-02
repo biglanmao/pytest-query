@@ -22,6 +22,6 @@ class QueryManger:
     def get_query(self, name):
         pass
 
-    def get_service_config(self, name, category=None):
+    def get_query_config(self, name, category=None):
         category = category or self.SERVICE_CATEGORY
-        return self.inventory.get_service_config(category, name)
+        return self.inventory.get_query_config(category, name)

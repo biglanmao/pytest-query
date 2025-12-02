@@ -5,28 +5,22 @@ import os
 import pytest as pytest
 import yaml
 
-from pytest_querys.core.inventory import ServicesInventory
-from pytest_querys.core.registry import service_manger, service_query, service_session
+from pytest_query.core.inventory import ServicesInventory
+from pytest_query.core.registry import service_manger, service_query, service_session
 
 
 @pytest.fixture(scope="session")
 def services_inventory(request):
     file_path = request.config.getoption("service_inventory")
     # file_path = os.path.join(request.config.getoption("rootdir"), file_path)
-    print("cfg_file_path", file_path)
-    if not os.path.exists(file_path):
-        inventory = None
-    else:
-        with open(file_path, "r", encoding="utf-8") as f:
-            cfg = yaml.safe_load(f)
-            inventory = ServicesInventory(cfg)
+    inventory = ServicesInventory.new_from_file(file_path)
     return inventory
 
 
 @pytest.fixture(scope="session")
 def service_mangers(services_inventory):
     def get_query_manger(name):
-        return service_manger.get(name)(services_inventory)
+        return service_manger.get(name)(inventory=services_inventory)
 
     return get_query_manger
 
