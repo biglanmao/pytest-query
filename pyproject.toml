@@ -1,5 +1,5 @@
 [project]
-name = "pytest-querys"
+name = "pytest-query"
 version = "1.0.0"
 description = "A service query management tool for web services, databases, and other connections"
 authors = [
@@ -23,24 +23,24 @@ test = []
 
 
 [project.urls]
-Homepage = "https://github.com/biglanmao/pytest-querys"
-Documentation = "https://biglanmao.github.io/pytest-querys"
-Repository = "https://github.com/biglanmao/pytest-querys"
-Issues = "https://github.com/biglanmao/pytest-querys/issues"
+Homepage = "https://github.com/biglanmao/pytest-query"
+Documentation = "https://biglanmao.github.io/pytest-query"
+Repository = "https://github.com/biglanmao/pytest-query"
+Issues = "https://github.com/biglanmao/pytest-query/issues"
 
 [project.scripts]
 # web-service-manager = "web_service_manager.cli:main"
 
-[project.entry-points."manger.querys.pytest_querys"]
-http_api_server = "pytest_querys.querys.http:HttpQueryManger"
+[project.entry-points."manger.queries.pytest_query"]
+http_api_server = "pytest_query.queries.http:HttpQueryManger"
 
-[project.entry-points."query.querys.pytest_querys"]
+[project.entry-points."query.queries.pytest_query"]
 
 
-[project.entry-points."session.querys.pytest_querys"]
+[project.entry-points."session.queries.pytest_query"]
 
 [project.entry-points."pytest11"]
-pytest-querys = "pytest_querys.plugin"
+pytest-querys = "pytest_query.plugin"
 
 [build-system]
 requires = ["setuptools>=45", "wheel"]
