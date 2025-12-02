@@ -1,7 +1,7 @@
 from pytest_query.fixtures import (
     services_inventory,
     service_mangers,
-    service_querys,
+    service_queries,
     service_sessions,
 )
 

@@ -26,7 +26,7 @@ def service_mangers(services_inventory):
 
 
 @pytest.fixture(scope="session")
-def service_querys(services_inventory):
+def service_queries(services_inventory):
     def get_query_manger(name):
         return service_query.get(name)(services_inventory)
 
